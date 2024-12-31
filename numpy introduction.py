@@ -1,4 +1,4 @@
-# 출처: geeksforgeeks NumPy Introduction https://www.geeksforgeeks.org/introduction-to-numpy/?ref=gcse_outind
+# 출처: geeksforgeeks NumPy Introduction https://www.geeksforgeeks.org/introduction-to-numpy/?ref=gcse_outind, 유튜브 나동빈
 '''
 다차원 배열을 나타냄
 Numpy에서 차원은 axes라고 불리며 차원 수는 rank라고 칭함
@@ -46,14 +46,15 @@ print(d)
 [['a' 'a' 'a']
  ['a' 'a' 'a']
  ['a' 'a' 'a']]'''
-# d. 0과 1사이의 무작위 실수로 이루어진 행렬 생성
+# 무작위 실수로 이루어진 행렬 생성
 e = np.random.random((2, 2))
 print(e)
 '''
 [[0.82865734 0.30178536] 
 [0.63319157 0.05515122]]
 '''
-
+print(np.random.randint(0, 10, (3, 4)))
+print(np.random.normal(0, 1, (4, 4)))
 # e. arrange()함수 사용
 # 등차수열로 이루어진 배열의 행 생성
 f = np.arange(0, -5, -1)
@@ -189,3 +190,26 @@ print(np.bitwise_or(a, b)) # 비트가 하나라도 1이면 1 a and b = [10, 000
 # XOR: 두 비트가 달라야 1
 # Invert: 비트 전환
 print(np.invert(a)) #invert(a) = [11111110, 11111000, 00000100] = [-3, -9, -126]
+
+# Bit shift
+a = [2, 8, 15] # [00010, 00001000, 0000001111]
+bit_shift = [3, 4, 5]
+output = np.left_shift(a, bit_shift)
+print(output) # [10000, 10000000, 1111000000] = [16, 128 ,480]
+print(np.right_shift(a, bit_shift)) # [0, 0, 0]
+
+# 이진수
+in_num = [10, 16]
+out_num = np.binary_repr(in_num[0])
+print(out_num)
+print(np.binary_repr(in_num[1], width = 5)) # 비트수 5로 설정
+
+# 이진수 패킹
+a = np.array([[[1, 0, 1],
+            [0, 1, 0]],
+            [[1, 1, 0],
+            [0, 0, 1]]])
+for i in range(3):
+    print(np.packbits(a, axis = i))
+
+print(np.packbits(a, axis = 0))
