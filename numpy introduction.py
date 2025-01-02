@@ -106,7 +106,7 @@ d = np.concatenate([a, b], axis = 0)
 print(c)
 print(d)
 # 배열 나누기
-array = np.arange(8).reshape(2, 4)
+array = np.arange(6).reshape(2, 3)
 left, right = np.split(array, [2], axis = 1)
 print(left)
 print(right)
@@ -144,25 +144,7 @@ print(cond)
 temp = arr[cond]
 print(temp) # 조건이 참인 원소만 출력
 
-# NumPy 기본 연산
-# 1. 1차원 배열 함수 연산
-a = np.array([1, 2, 5, 3])
-# 모든 원소에 1 더하기
-print(a + 1)
-# 모든 원소에 3 빼기
-print(a - 3)
-# 모든 원소에 10 곱하기
-print(a * 10)
-# 모든 원소 제곱
-print(a ** 2)
-# transpose
-print(a.T) #변화가 없는 걸 보니 수학의 행렬과 numpy의 배열은 약간의 차이가 있는 것 같다.
-arr = np.arange(24).reshape(2, 3, 4)
-print(arr)
 
-# 축 재배열
-transposed = arr.transpose()
-print(transposed)
 
 # 수학의 행렬과 array 비교
 '''
@@ -175,29 +157,4 @@ Transpose	.T 또는 transpose() 사용	    전치(transpose)는 수학적 연산
 브로드캐스팅	서로 다른 shape도 연산 가능	브로드캐스팅 불가
 다차원 처리	고차원 데이터 처리 가능	        2차원만 가능
 '''
-
-# 2. 단항 연산
-arr = np.array([[1, 5, 6],
-                [4, 7, 2],
-                [3, 1, 9]])
-# 배열 중 가장 큰 원소
-print(arr.max()) # default: axis = None -> 전체 배열에서 최대값 찾음
-print(arr.max(axis = 1)) # 축 1 행 내부 비교
-# 배열 중 가장 작은 원소
-print(arr.min())
-print(arr.min(axis = 0)) # 축 0 열 내부 비교
-# 원소들의 합
-print(arr.sum())
-# 누적 합
-print(arr.cumsum(axis = 0))
-
-# 3. 이항연산
-a = np.array([[1, 2],
-              [3, 4]])
-b = np.array([[4, 3],
-              [2, 1]])
-print(a + b) # 원소별 덧셈
-print(a * b) # 원소별 곱셈
-print(a @ b) # 행렬 곱셈
-print(a.dot(b)) # 내적
 
