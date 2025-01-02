@@ -94,6 +94,25 @@ print(flat_arr)
  [4 5 6]]
 [1 2 3 4 5 6]
 '''
+
+# 가로축으로 합치기
+a = np.array([1, 2, 3])
+b = np. array([4, 5, 6])
+c = np.concatenate([a, b])
+# 세로축으로 합치기
+a = np.arange(4).reshape(1, 4)
+b = np.arange(8).reshape(2, 4)
+d = np.concatenate([a, b], axis = 0)
+print(c)
+print(d)
+# 배열 나누기
+array = np.arange(8).reshape(2, 4)
+left, right = np.split(array, [2], axis = 1)
+print(left)
+print(right)
+left, right = np.split(array, [2], axis = 0)
+print(left)
+print(right)
 # 2. Array 인덱싱
 '''
 슬라이싱
@@ -182,34 +201,3 @@ print(a * b) # 원소별 곱셈
 print(a @ b) # 행렬 곱셈
 print(a.dot(b)) # 내적
 
-# 4. 비트연산
-a = np.array([2, 8, 125])
-b = np.array([3, 3, 115])
-print(np.bitwise_and(a, b)) # 비트가 둘 다 1이면 1 a = [10, 1000, 11111100) b = [11, 0011, 11110010]
-print(np.bitwise_or(a, b)) # 비트가 하나라도 1이면 1 a and b = [10, 0000, 11110000] = [2, 0, 113] a or b = [10, 1011, 111111110] = [3, 11, 127]
-# XOR: 두 비트가 달라야 1
-# Invert: 비트 전환
-print(np.invert(a)) #invert(a) = [11111110, 11111000, 00000100] = [-3, -9, -126]
-
-# Bit shift
-a = [2, 8, 15] # [00010, 00001000, 0000001111]
-bit_shift = [3, 4, 5]
-output = np.left_shift(a, bit_shift)
-print(output) # [10000, 10000000, 1111000000] = [16, 128 ,480]
-print(np.right_shift(a, bit_shift)) # [0, 0, 0]
-
-# 이진수
-in_num = [10, 16]
-out_num = np.binary_repr(in_num[0])
-print(out_num)
-print(np.binary_repr(in_num[1], width = 5)) # 비트수 5로 설정
-
-# 이진수 패킹
-a = np.array([[[1, 0, 1],
-            [0, 1, 0]],
-            [[1, 1, 0],
-            [0, 0, 1]]])
-for i in range(3):
-    print(np.packbits(a, axis = i))
-
-print(np.packbits(a, axis = 0))
